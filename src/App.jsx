@@ -19,7 +19,6 @@ const App = () => {
         <p key={index}>{item}</p>
       ))}
       <MarkdownInput onSubmit={handleSubmit} />
-      
       {console.log(data)}
     </div>
   );

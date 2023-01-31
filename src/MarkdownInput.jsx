@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import ButtonSave from './ButtonSave';
+import './MarkdownInput.css'
+
 
 const MarkdownInput = (props) => {
     // Définition de l'état local pour stocker la valeur du textarea
@@ -15,11 +18,16 @@ const MarkdownInput = (props) => {
       props.onSubmit(value);
       setValue('');
     };
+    const handleDelete = () => {
+      props.onDelete();
+      setValue('');
+    };
+    
   
     return (
-      <form onSubmit={handleSubmit}>
-        <textarea value={value} onChange={handleChange} />
-        <button type="submit">Sauvegarder</button>
+      <form className='form'>
+        <textarea className='textarea' value={value} onChange={handleChange} />
+        <ButtonSave onSubmit={handleSubmit} label="Sauvegarder" />
       </form>
     );
   };
