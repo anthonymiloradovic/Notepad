@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import MarkdownInput from './MarkdownInput'
+import ButtonDelete from './ButtonDelete'
 import './App.css'
 
 
@@ -12,11 +13,15 @@ const App = () => {
     setData([...data, value]);
     
   };
-
+  const handleDelete = (index) => {
+    setData(data.slice(0, index).concat(data.slice(index + 1)));
+  };
   return (
     <div>
       {data.map((item, index) => (
-        <p key={index}>{item}</p>
+        <p key={index}>{item}
+        <ButtonDelete index={index} handleDelete={handleDelete} />
+        </p>
       ))}
       <MarkdownInput onSubmit={handleSubmit} />
       {console.log(data)}
